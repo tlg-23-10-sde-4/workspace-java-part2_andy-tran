@@ -2,20 +2,26 @@ package com.entertainment.client;
 
 import com.entertainment.Television;
 
+import java.util.HashSet;
+import java.util.Set;
+
 class TelevisionClient {
     public static void main(String[] args) {
-        Television tv1 = new Television();
-        Television tv2 = new Television("TCL", 20);
-        System.out.println(tv2);
-        System.out.println(tv1);
-        tv1.setVolume(12);
-        tv1.setBrand("toshiba");
-        System.out.println(tv1);
-
-        Television tva = new Television("sony", 5);
-        Television tvb = new Television("sony", 5);
+        Television tva = new Television("LG", 34);
+        Television tvb = new Television("sony", 50);
 
         System.out.println("tva == tvb: " + (tva == tvb));
         System.out.println("tva.equals(tvb): " + (tva.equals(tvb)));
+        System.out.println();
+
+        System.out.println(tva.hashCode()); // 109622188
+        System.out.println(tvb.hashCode()); // 109622188
+        // if .equals is true hashcode will be the same.
+
+        System.out.println();
+        Set<Television> tvs = new HashSet<>();
+        tvs.add(tva);
+        tvs.add(tvb);
+        System.out.println(tvs.size());
     }
 }

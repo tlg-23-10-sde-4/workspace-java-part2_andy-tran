@@ -1,11 +1,13 @@
 package com.entertainment;
 
+import java.util.Objects;
+
 public class Television {
     private String brand;
     private int volume;
     private Tuner tuner = new Tuner();
 
-    public Television () {
+    public Television() {
         // no op
     }
 
@@ -38,6 +40,24 @@ public class Television {
 
     public void setVolume(int volume) {
         this.volume = volume;
+    }
+
+    @Override
+    public int hashCode() {
+        // poorly written hash func, instead use objects.hash
+        //return getBrand().length() + getVolume(); poorly written hash func
+        return Objects.hash(getBrand(), getVolume());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean res = false;
+        if (obj instanceof Television) { // proceed only if obj is a tv object
+            Television other = (Television) obj; // downcast obj to television
+            res = Objects.equals(this.getBrand(), other.getBrand()) && // null safe check
+                    this.getVolume() == other.getVolume(); // primitives cant be null
+        }
+        return res;
     }
 
     @Override
