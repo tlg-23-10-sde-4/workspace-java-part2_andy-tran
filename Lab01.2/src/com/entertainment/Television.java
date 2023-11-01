@@ -42,17 +42,31 @@ public class Television {
         this.volume = volume;
     }
 
-    @Override
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (this == obj) return true;
+//        if (obj == null || this.getClass() != obj.getClass()) return false;
+//        Television that = (Television) obj;
+//        return this.getVolume() == that.getVolume()
+//                && Objects.equals(getBrand(), that.getBrand());
+//    }
+
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(getBrand(), getVolume());
+//    }
+
+        @Override
     public int hashCode() {
         // poorly written hash func, instead use objects.hash
-        //return getBrand().length() + getVolume(); poorly written hash func
+        //return getBrand().length() + getVolume(); //poorly written hash func
         return Objects.hash(getBrand(), getVolume());
     }
 
     @Override
     public boolean equals(Object obj) {
         boolean res = false;
-        if (obj instanceof Television) { // proceed only if obj is a tv object
+        if (obj != null && this.getClass() == obj.getClass()) { // proceed only if obj is a tv object
             Television other = (Television) obj; // downcast obj to television
             res = Objects.equals(this.getBrand(), other.getBrand()) && // null safe check
                     this.getVolume() == other.getVolume(); // primitives cant be null
