@@ -8,6 +8,8 @@
  */
 package com.entertainment;
 
+import java.util.Comparator;
+
 class Tuner {
     private int channel = 3;  // default channel for cable and satellite customers
 

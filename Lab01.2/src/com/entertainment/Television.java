@@ -1,8 +1,9 @@
 package com.entertainment;
 
+import java.util.Comparator;
 import java.util.Objects;
 
-public class Television {
+public class Television implements Comparable<Television> {
     private String brand;
     private int volume;
     private Tuner tuner = new Tuner();
@@ -75,9 +76,15 @@ public class Television {
     }
 
     @Override
+    public int compareTo(Television other) {
+        return this.getBrand().compareTo(other.getBrand());
+    }
+
+    @Override
     public String toString() {
         return getClass().getSimpleName() +
                 " brand=" + getBrand() +
-                ", volume=" + getVolume();
+                ", volume=" + getVolume() +
+                ", channel=" + getCurrentChannel();
     }
 }
