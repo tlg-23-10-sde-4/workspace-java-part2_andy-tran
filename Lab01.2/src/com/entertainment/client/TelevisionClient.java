@@ -10,8 +10,8 @@ class TelevisionClient {
     public static void main(String[] args) {
         Television tva = new Television("sony", 50);
         Television tvb = new Television("sony", 50);
-        Television tvc = new Television("samsung", 32);
-        Television tvd = new Television("lg", 12);
+        Television tvc = new Television("sony", 52);
+        Television tvd = new Television("sony", 12);
 
         System.out.println("tva == tvb: " + (tva == tvb));
         System.out.println("tva.equals(tvb): " + (tva.equals(tvb)));
