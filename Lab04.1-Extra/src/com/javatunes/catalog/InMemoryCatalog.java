@@ -102,7 +102,6 @@ public class InMemoryCatalog implements Catalog {
      */
     public Collection<MusicItem> findSelfTitled () {
         Collection<MusicItem> res = new ArrayList<>();
-
         for (MusicItem item : catalogData) {
             if(item.getTitle().equals(item.getArtist())) {
                 res.add(item);
