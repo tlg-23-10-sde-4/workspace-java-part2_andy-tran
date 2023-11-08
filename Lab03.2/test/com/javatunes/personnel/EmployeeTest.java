@@ -13,8 +13,18 @@ public class EmployeeTest {
 
     @Before
     public void setUp() {
-        emp1 = new SalariedEmployee("Lynn", Date.valueOf("1999-09-09"));
-        emp2 = new SalariedEmployee("Lynn", Date.valueOf("1999-09-09"));
+        //emp1 = new DummyEmployee("Lynn", Date.valueOf("1999-09-09"));
+        //emp2 = new DummyEmployee("Lynn", Date.valueOf("1999-09-09"));
+
+        emp1 = new Employee() {
+            public double pay() {return 0;}
+            public double payTaxes() {return 0;}
+        };
+
+        emp2 = new Employee() {
+            public double pay() {return 0;}
+            public double payTaxes() {return 0;}
+        };
     }
 
     @Test
@@ -32,5 +42,15 @@ public class EmployeeTest {
     @Test
     public void equals_shouldReturnTrue_allPropertiesSame() {
         assertEquals(emp1, emp2);
+    }
+
+    // NAMED, MEMBER LEVEL INNER CLASS
+    private class DummyEmployee extends Employee {
+        public DummyEmployee(String name, Date hireDate) {
+            super(name, hireDate);
+        }
+
+        public double pay() {return 0;}
+        public double payTaxes() {return 0;}
     }
 }
