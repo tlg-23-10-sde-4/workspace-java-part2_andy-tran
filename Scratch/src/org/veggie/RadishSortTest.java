@@ -1,6 +1,7 @@
 package org.veggie;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 class RadishSortTest {
@@ -22,12 +23,35 @@ class RadishSortTest {
         System.out.println();
 
         System.out.println("color, via comparator");
-        radishes.sort(new RadishColorComparator());
+        // radishes.sort(new RadishColorComparator());
+        radishes.sort(new Comparator<Radish>() {
+            @Override
+            public int compare(Radish r1, Radish r2) {
+                return (r1.getColor().compareTo(r2.getColor()));
+            }
+        });
         dump(radishes);
         System.out.println();
 
         System.out.println("guysOnTop, via comparator");
-        radishes.sort(new RadishGuysOnTopComparator());
+        // radishes.sort(new RadishGuysOnTopComparator());
+        radishes.sort(new Comparator<Radish>() {
+            @Override
+            public int compare(Radish o1, Radish o2) {
+                return Integer.compare(o1.getGuysOnTop(), o2.getGuysOnTop());
+            }
+        });
+        dump(radishes);
+        System.out.println();
+
+        System.out.println("sort by tailLength via anonymous class");
+        radishes.sort(new Comparator<Radish>() {
+
+            @Override
+            public int compare(Radish r1, Radish r2) {
+                return Double.compare(r1.getTailLength(), r2.getTailLength());
+            }
+        });
         dump(radishes);
         System.out.println();
     }
